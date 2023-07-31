@@ -14,14 +14,18 @@ st.set_page_config(page_title='ChatGPT Assistant', layout='wide', page_icon='�
 # 自定义元素样式
 st.markdown(css_code, unsafe_allow_html=True)
 # 0. 输入密码验证
-st.markdown("### 2. 输入密码验证")
-password = st.text_input("请输入密码")
-if len(password)==0 :
-    st.write("请输入密码")
-    st.stop()
-if  password !=st.secrets["pwd"] :
-    st.write("密码错误")
-    st.stop()
+
+noAccess=True
+if noAccess:
+    password = st.text_input("请输入密码")
+    if len(password)==0 :
+        st.write("请输入密码")
+        st.stop()
+    if  password !=st.secrets["pwd"] :
+        st.write("密码错误")
+        st.stop()
+    else:
+        noAccess=False
     
 if "initial_settings" not in st.session_state:
     # 历史聊天窗口
