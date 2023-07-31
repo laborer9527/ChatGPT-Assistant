@@ -26,11 +26,8 @@ if 'pwd' not in st.session_state:
     if password==st.secrets["pwd"] :
         st.session_state['pwd'] = password
         #重新运行脚本
-	st.experimental_rerun()
-        
+        st.experimental_rerun()
 
-
-    
 if "initial_settings" not in st.session_state:
     # 历史聊天窗口
     st.session_state["path"] = 'history_chats_file'
