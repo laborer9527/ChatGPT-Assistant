@@ -13,14 +13,20 @@ from voice_toolkit import voice_toolkit
 st.set_page_config(page_title='ChatGPT Assistant', layout='wide', page_icon='🤖')
 # 自定义元素样式
 st.markdown(css_code, unsafe_allow_html=True)
-# 0. 输入密码验证
-password = st.text_input("请输入密码")
-if len(password)==0 :
-    st.write("请输入密码")
-    st.stop()
-if  password !=st.secrets["pwd"] :
-    st.write("密码错误")
-    st.stop()
+
+# 密码验证
+if 'pwd' not in st.session_state:
+    password = st.text_input("请输入密码")
+    if len(password)==0 :
+        st.write("请输入密码")
+        st.stop()
+    if  password != st.secrets["pwd"]:
+        st.write("密码错误")
+        st.stop()
+    if password==st.secrets["pwd"] :
+        st.session_state['pwd'] = password
+        
+
 
     
 if "initial_settings" not in st.session_state:
