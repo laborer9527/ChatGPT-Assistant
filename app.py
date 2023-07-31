@@ -25,6 +25,8 @@ if 'pwd' not in st.session_state:
         st.stop()
     if password==st.secrets["pwd"] :
         st.session_state['pwd'] = password
+        #重新运行脚本
+		st.experimental_rerun()
         
 
 
